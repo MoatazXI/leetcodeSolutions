@@ -1,4 +1,6 @@
-import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 
 public class Main {
     /*public boolean containsDuplicate(int[] nums) {
@@ -28,7 +30,7 @@ public class Main {
         }
 
         return false;
-    }*/
+    }
 
 
     public boolean containsDuplicate(int[] nums) {
@@ -41,8 +43,23 @@ public class Main {
             if (nums[i] == nums[i + 1]) return true;
         }
         return false;
-    }
+    }*/
 
+    public boolean containsDuplicate(int[] nums) {
+        // Complexity O(n)
+        // we can add to set , check first if element already in set then return true
+        //// add function adds element to set if is not inside it , if element already there function will return false ,
+        // then if returns false means element is there means duplication , use not false to get inside if condition and return true
+        Set<Integer> setOfUniqueElements = new HashSet<>();
+
+        for (int num : nums) {
+            if (!setOfUniqueElements.add(num)) {
+                return true;
+            }
+        }
+
+        return false; // there is no duplicates
+    }
 
     public static void main(String[] args) {
         Main obj = new Main();
